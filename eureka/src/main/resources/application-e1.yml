@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eureka    #服务名称
+
+
+server:
+  port: 8001    #服务端口
+
+
+eureka:
+  instance:
+    hostname: e1
+  client:
+    serviceUrl:
+      defaultZone: http://e2:8002/eureka,  http://e3:8003/eureka
