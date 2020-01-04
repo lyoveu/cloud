@@ -2,13 +2,15 @@ package com.wx.admin.contorller;
 
 import com.wx.admin.common.BaseController;
 import com.wx.admin.common.api.CommonResult;
-import com.wx.admin.model.Province;
-import com.wx.admin.service.ProvinceService;
+import com.wx.admin.dto.ProvinceDto;
+import com.wx.admin.service.DistrictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,13 +24,13 @@ import java.util.List;
 public class DistrictController extends BaseController {
     
     @Autowired
-    private ProvinceService provinceService;
+    private DistrictService districtService;
 
 
     @ApiOperation("获取所有地区列表")
-    @GetMapping("/listAll")
-    public CommonResult<List<Province>> getProvinceList() {
-        return CommonResult.success(provinceService.listAllProvince());
+    @GetMapping("/tree")
+    public CommonResult<List<ProvinceDto>> getDistricts() {
+        return CommonResult.success(districtService.getDistrictTree());
     }
 
 }

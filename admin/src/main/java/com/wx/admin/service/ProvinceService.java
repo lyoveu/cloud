@@ -1,5 +1,6 @@
 package com.wx.admin.service;
 
+import com.wx.admin.dto.ProvinceDto;
 import com.wx.admin.model.Province;
 
 import java.util.List;
