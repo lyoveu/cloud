@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.news.mapper.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.wx.news.model.News">
+    <id column="news_id" jdbcType="BIGINT" property="newsId" />
+    <result column="news_type" jdbcType="INTEGER" property="newsType" />
+    <result column="news_title" jdbcType="VARCHAR" property="newsTitle" />
+    <result column="news_subhead" jdbcType="VARCHAR" property="newsSubhead" />
+    <result column="news_content" jdbcType="VARCHAR" property="newsContent" />
+    <result column="news_source" jdbcType="INTEGER" property="newsSource" />
+    <result column="news_author" jdbcType="VARCHAR" property="newsAuthor" />
+    <result column="read_count" jdbcType="INTEGER" property="readCount" />
+    <result column="news_publish_time" jdbcType="TIMESTAMP" property="newsPublishTime" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="news_state" jdbcType="INTEGER" property="newsState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="admin_id" jdbcType="BIGINT" property="adminId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    news_id, news_type, news_title, news_subhead, news_content, news_source, news_author, 
+    read_count, news_publish_time, sort, news_state, create_time, update_time, admin_id
+  </sql>
+  <select id="selectByExample" parameterType="com.wx.news.model.NewsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_news
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_news
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wx.news.model.NewsExample">
+    delete from t_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wx.news.model.News">
+    <selectKey keyProperty="newsId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_news (news_type, news_title, news_subhead, 
+      news_content, news_source, news_author, 
+      read_count, news_publish_time, sort, 
+      news_state, create_time, update_time, 
+      admin_id)
+    values (#{newsType,jdbcType=INTEGER}, #{newsTitle,jdbcType=VARCHAR}, #{newsSubhead,jdbcType=VARCHAR}, 
+      #{newsContent,jdbcType=VARCHAR}, #{newsSource,jdbcType=INTEGER}, #{newsAuthor,jdbcType=VARCHAR}, 
+      #{readCount,jdbcType=INTEGER}, #{newsPublishTime,jdbcType=TIMESTAMP}, #{sort,jdbcType=INTEGER}, 
+      #{newsState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{adminId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wx.news.model.News">
+    <selectKey keyProperty="newsId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsType != null">
+        news_type,
+      </if>
+      <if test="newsTitle != null">
+        news_title,
+      </if>
+      <if test="newsSubhead != null">
+        news_subhead,
+      </if>
+      <if test="newsContent != null">
+        news_content,
+      </if>
+      <if test="newsSource != null">
+        news_source,
+      </if>
+      <if test="newsAuthor != null">
+        news_author,
+      </if>
+      <if test="readCount != null">
+        read_count,
+      </if>
+      <if test="newsPublishTime != null">
+        news_publish_time,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="newsState != null">
+        news_state,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsType != null">
+        #{newsType,jdbcType=INTEGER},
+      </if>
+      <if test="newsTitle != null">
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsSubhead != null">
+        #{newsSubhead,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null">
+        #{newsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="newsSource != null">
+        #{newsSource,jdbcType=INTEGER},
+      </if>
+      <if test="newsAuthor != null">
+        #{newsAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="readCount != null">
+        #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="newsPublishTime != null">
+        #{newsPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="newsState != null">
+        #{newsState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wx.news.model.NewsExample" resultType="java.lang.Long">
+    select count(*) from t_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_news
+    <set>
+      <if test="record.newsId != null">
+        news_id = #{record.newsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.newsType != null">
+        news_type = #{record.newsType,jdbcType=INTEGER},
+      </if>
+      <if test="record.newsTitle != null">
+        news_title = #{record.newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsSubhead != null">
+        news_subhead = #{record.newsSubhead,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsContent != null">
+        news_content = #{record.newsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsSource != null">
+        news_source = #{record.newsSource,jdbcType=INTEGER},
+      </if>
+      <if test="record.newsAuthor != null">
+        news_author = #{record.newsAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readCount != null">
+        read_count = #{record.readCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.newsPublishTime != null">
+        news_publish_time = #{record.newsPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.newsState != null">
+        news_state = #{record.newsState,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.adminId != null">
+        admin_id = #{record.adminId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_news
+    set news_id = #{record.newsId,jdbcType=BIGINT},
+      news_type = #{record.newsType,jdbcType=INTEGER},
+      news_title = #{record.newsTitle,jdbcType=VARCHAR},
+      news_subhead = #{record.newsSubhead,jdbcType=VARCHAR},
+      news_content = #{record.newsContent,jdbcType=VARCHAR},
+      news_source = #{record.newsSource,jdbcType=INTEGER},
+      news_author = #{record.newsAuthor,jdbcType=VARCHAR},
+      read_count = #{record.readCount,jdbcType=INTEGER},
+      news_publish_time = #{record.newsPublishTime,jdbcType=TIMESTAMP},
+      sort = #{record.sort,jdbcType=INTEGER},
+      news_state = #{record.newsState,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      admin_id = #{record.adminId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wx.news.model.News">
+    update t_news
+    <set>
+      <if test="newsType != null">
+        news_type = #{newsType,jdbcType=INTEGER},
+      </if>
+      <if test="newsTitle != null">
+        news_title = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsSubhead != null">
+        news_subhead = #{newsSubhead,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null">
+        news_content = #{newsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="newsSource != null">
+        news_source = #{newsSource,jdbcType=INTEGER},
+      </if>
+      <if test="newsAuthor != null">
+        news_author = #{newsAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="readCount != null">
+        read_count = #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="newsPublishTime != null">
+        news_publish_time = #{newsPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="newsState != null">
+        news_state = #{newsState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wx.news.model.News">
+    update t_news
+    set news_type = #{newsType,jdbcType=INTEGER},
+      news_title = #{newsTitle,jdbcType=VARCHAR},
+      news_subhead = #{newsSubhead,jdbcType=VARCHAR},
+      news_content = #{newsContent,jdbcType=VARCHAR},
+      news_source = #{newsSource,jdbcType=INTEGER},
+      news_author = #{newsAuthor,jdbcType=VARCHAR},
+      read_count = #{readCount,jdbcType=INTEGER},
+      news_publish_time = #{newsPublishTime,jdbcType=TIMESTAMP},
+      sort = #{sort,jdbcType=INTEGER},
+      news_state = #{newsState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=BIGINT}
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </update>
+</mapper>
