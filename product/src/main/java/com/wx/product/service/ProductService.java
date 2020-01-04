@@ -17,17 +17,17 @@ public interface ProductService {
 
     /**
      * 新增
-     * @param news
+     * @param product
      * @return
      */
-    int createProduct(Product news);
+    int createProduct(Product product);
 
     /**
      * 修改
-     * @param news
+     * @param product
      * @return
      */
-    int updateProduct(Product news);
+    int updateProduct(Product product);
 
     /**
      * 删除

@@ -18,17 +18,17 @@ public interface ProductTypeService {
 
     /**
      * 新增
-     * @param newsType
+     * @param productType
      * @return
      */
-    int createProductType(ProductType newsType);
+    int createProductType(ProductType productType);
 
     /**
      * 修改
-     * @param newsType
+     * @param productType
      * @return
      */
-    int updateProductType(ProductType newsType);
+    int updateProductType(ProductType productType);
 
     /**
      * 删除
