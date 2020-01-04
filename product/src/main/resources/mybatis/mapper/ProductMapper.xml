@@ -6,10 +6,13 @@
     <result column="product_type" jdbcType="INTEGER" property="productType" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="product_title" jdbcType="VARCHAR" property="productTitle" />
+    <result column="product_subhead" jdbcType="VARCHAR" property="productSubhead" />
     <result column="product_header" jdbcType="VARCHAR" property="productHeader" />
     <result column="market_price" jdbcType="DECIMAL" property="marketPrice" />
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="is_home" jdbcType="INTEGER" property="isHome" />
+    <result column="is_recommend" jdbcType="INTEGER" property="isRecommend" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="product_state" jdbcType="INTEGER" property="productState" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -75,8 +78,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    product_id, product_type, product_name, product_title, product_header, market_price, 
-    price, description, sort, product_state, create_time, update_time, admin_id
+    product_id, product_type, product_name, product_title, product_subhead, product_header, 
+    market_price, price, description, is_home, is_recommend, sort, product_state, create_time, 
+    update_time, admin_id
   </sql>
   <select id="selectByExample" parameterType="com.wx.product.model.ProductExample" resultMap="BaseResultMap">
     select
@@ -113,13 +117,15 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_product (product_type, product_name, product_title, 
-      product_header, market_price, price, 
-      description, sort, product_state, 
+      product_subhead, product_header, market_price, 
+      price, description, is_home, 
+      is_recommend, sort, product_state, 
       create_time, update_time, admin_id
       )
     values (#{productType,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{productTitle,jdbcType=VARCHAR}, 
-      #{productHeader,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
-      #{description,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{productState,jdbcType=INTEGER}, 
+      #{productSubhead,jdbcType=VARCHAR}, #{productHeader,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DECIMAL}, 
+      #{price,jdbcType=DECIMAL}, #{description,jdbcType=VARCHAR}, #{isHome,jdbcType=INTEGER}, 
+      #{isRecommend,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{productState,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{adminId,jdbcType=BIGINT}
       )
   </insert>
@@ -138,6 +144,9 @@
       <if test="productTitle != null">
         product_title,
       </if>
+      <if test="productSubhead != null">
+        product_subhead,
+      </if>
       <if test="productHeader != null">
         product_header,
       </if>
@@ -149,6 +158,12 @@
       </if>
       <if test="description != null">
         description,
+      </if>
+      <if test="isHome != null">
+        is_home,
+      </if>
+      <if test="isRecommend != null">
+        is_recommend,
       </if>
       <if test="sort != null">
         sort,
@@ -176,6 +191,9 @@
       <if test="productTitle != null">
         #{productTitle,jdbcType=VARCHAR},
       </if>
+      <if test="productSubhead != null">
+        #{productSubhead,jdbcType=VARCHAR},
+      </if>
       <if test="productHeader != null">
         #{productHeader,jdbcType=VARCHAR},
       </if>
@@ -187,6 +205,12 @@
       </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isHome != null">
+        #{isHome,jdbcType=INTEGER},
+      </if>
+      <if test="isRecommend != null">
+        #{isRecommend,jdbcType=INTEGER},
       </if>
       <if test="sort != null">
         #{sort,jdbcType=INTEGER},
@@ -226,6 +250,9 @@
       <if test="record.productTitle != null">
         product_title = #{record.productTitle,jdbcType=VARCHAR},
       </if>
+      <if test="record.productSubhead != null">
+        product_subhead = #{record.productSubhead,jdbcType=VARCHAR},
+      </if>
       <if test="record.productHeader != null">
         product_header = #{record.productHeader,jdbcType=VARCHAR},
       </if>
@@ -237,6 +264,12 @@
       </if>
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isHome != null">
+        is_home = #{record.isHome,jdbcType=INTEGER},
+      </if>
+      <if test="record.isRecommend != null">
+        is_recommend = #{record.isRecommend,jdbcType=INTEGER},
       </if>
       <if test="record.sort != null">
         sort = #{record.sort,jdbcType=INTEGER},
@@ -264,10 +297,13 @@
       product_type = #{record.productType,jdbcType=INTEGER},
       product_name = #{record.productName,jdbcType=VARCHAR},
       product_title = #{record.productTitle,jdbcType=VARCHAR},
+      product_subhead = #{record.productSubhead,jdbcType=VARCHAR},
       product_header = #{record.productHeader,jdbcType=VARCHAR},
       market_price = #{record.marketPrice,jdbcType=DECIMAL},
       price = #{record.price,jdbcType=DECIMAL},
       description = #{record.description,jdbcType=VARCHAR},
+      is_home = #{record.isHome,jdbcType=INTEGER},
+      is_recommend = #{record.isRecommend,jdbcType=INTEGER},
       sort = #{record.sort,jdbcType=INTEGER},
       product_state = #{record.productState,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -289,6 +325,9 @@
       <if test="productTitle != null">
         product_title = #{productTitle,jdbcType=VARCHAR},
       </if>
+      <if test="productSubhead != null">
+        product_subhead = #{productSubhead,jdbcType=VARCHAR},
+      </if>
       <if test="productHeader != null">
         product_header = #{productHeader,jdbcType=VARCHAR},
       </if>
@@ -300,6 +339,12 @@
       </if>
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isHome != null">
+        is_home = #{isHome,jdbcType=INTEGER},
+      </if>
+      <if test="isRecommend != null">
+        is_recommend = #{isRecommend,jdbcType=INTEGER},
       </if>
       <if test="sort != null">
         sort = #{sort,jdbcType=INTEGER},
@@ -324,10 +369,13 @@
     set product_type = #{productType,jdbcType=INTEGER},
       product_name = #{productName,jdbcType=VARCHAR},
       product_title = #{productTitle,jdbcType=VARCHAR},
+      product_subhead = #{productSubhead,jdbcType=VARCHAR},
       product_header = #{productHeader,jdbcType=VARCHAR},
       market_price = #{marketPrice,jdbcType=DECIMAL},
       price = #{price,jdbcType=DECIMAL},
       description = #{description,jdbcType=VARCHAR},
+      is_home = #{isHome,jdbcType=INTEGER},
+      is_recommend = #{isRecommend,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
       product_state = #{productState,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

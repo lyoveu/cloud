@@ -40,5 +40,20 @@
         <table tableName="t_online_message" domainObjectName="OnlineMessage">
             <generatedKey column="message_id" sqlStatement="MySql" identity="true"/>
         </table>
+        <table tableName="s_province" domainObjectName="Province">
+            <generatedKey column="province_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="s_city" domainObjectName="City">
+            <generatedKey column="city_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="s_area" domainObjectName="Area">
+            <generatedKey column="area_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="s_company" domainObjectName="Company">
+            <generatedKey column="company_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="s_company_description" domainObjectName="CompanyDescription">
+            <generatedKey column="company_description_id" sqlStatement="MySql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

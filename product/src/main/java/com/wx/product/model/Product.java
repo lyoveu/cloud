@@ -34,6 +34,13 @@ public class Product implements Serializable {
     private String productTitle;
 
     /**
+     * 产品副标题
+     *
+     * @mbg.generated
+     */
+    private String productSubhead;
+
+    /**
      * 产品头图
      *
      * @mbg.generated
@@ -60,6 +67,20 @@ public class Product implements Serializable {
      * @mbg.generated
      */
     private String description;
+
+    /**
+     * 是否首页展示：0、否；1、是
+     *
+     * @mbg.generated
+     */
+    private Integer isHome;
+
+    /**
+     * 是否推荐：0、否；1、是
+     *
+     * @mbg.generated
+     */
+    private Integer isRecommend;
 
     /**
      * 序号
@@ -130,6 +151,14 @@ public class Product implements Serializable {
         this.productTitle = productTitle;
     }
 
+    public String getProductSubhead() {
+        return productSubhead;
+    }
+
+    public void setProductSubhead(String productSubhead) {
+        this.productSubhead = productSubhead;
+    }
+
     public String getProductHeader() {
         return productHeader;
     }
@@ -160,6 +189,22 @@ public class Product implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getIsHome() {
+        return isHome;
+    }
+
+    public void setIsHome(Integer isHome) {
+        this.isHome = isHome;
+    }
+
+    public Integer getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(Integer isRecommend) {
+        this.isRecommend = isRecommend;
     }
 
     public Integer getSort() {
@@ -212,10 +257,13 @@ public class Product implements Serializable {
         sb.append(", productType=").append(productType);
         sb.append(", productName=").append(productName);
         sb.append(", productTitle=").append(productTitle);
+        sb.append(", productSubhead=").append(productSubhead);
         sb.append(", productHeader=").append(productHeader);
         sb.append(", marketPrice=").append(marketPrice);
         sb.append(", price=").append(price);
         sb.append(", description=").append(description);
+        sb.append(", isHome=").append(isHome);
+        sb.append(", isRecommend=").append(isRecommend);
         sb.append(", sort=").append(sort);
         sb.append(", productState=").append(productState);
         sb.append(", createTime=").append(createTime);

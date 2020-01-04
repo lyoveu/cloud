@@ -1,6 +1,7 @@
 package com.wx.news.controller;
 
 
+import com.wx.news.common.BaseController;
 import com.wx.news.common.api.CommonResult;
 import com.wx.news.model.NewsType;
 import com.wx.news.service.NewsTypeService;
@@ -20,19 +21,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/newsType")
 @Slf4j
-public class NewsTypeController {
+public class NewsTypeController extends BaseController {
     
     @Autowired
     private NewsTypeService newsTypeService;
 
 
-    @ApiOperation("获取所有新闻列表")
+    @ApiOperation("获取所有新闻类型列表")
     @GetMapping("/listAll")
     public CommonResult<List<NewsType>> getNewsTypeList() {
         return CommonResult.success(newsTypeService.listAllNewsType());
     }
 
-    @ApiOperation("添加新闻")
+    @ApiOperation("添加新闻类型")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public CommonResult createNewsType(@RequestBody NewsType newsType) {
         CommonResult commonResult;
@@ -47,7 +48,7 @@ public class NewsTypeController {
         return commonResult;
     }
 
-    @ApiOperation("更新指定id新闻信息")
+    @ApiOperation("更新指定id新闻类型信息")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public CommonResult updateNewsType(@RequestBody NewsType newsTypeDto) {
         CommonResult commonResult;
@@ -62,7 +63,7 @@ public class NewsTypeController {
         return commonResult;
     }
 
-    @ApiOperation("删除指定id的新闻")
+    @ApiOperation("删除指定id的新闻类型")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public CommonResult deleteNewsType(@PathVariable("id") Integer id) {
         int count = newsTypeService.deleteNewsType(id);
@@ -75,7 +76,7 @@ public class NewsTypeController {
         }
     }
 
-    @ApiOperation("获取指定id的新闻详情")
+    @ApiOperation("获取指定id的新闻类型详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public CommonResult<NewsType> newsType(@PathVariable("id") Integer id) {
         return CommonResult.success(newsTypeService.getNewsType(id));

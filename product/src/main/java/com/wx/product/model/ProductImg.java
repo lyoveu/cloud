@@ -4,10 +4,25 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ProductImg implements Serializable {
+    /**
+     * 产品图片主键id
+     *
+     * @mbg.generated
+     */
     private Long productImgId;
 
+    /**
+     * 产品id
+     *
+     * @mbg.generated
+     */
     private Long productId;
 
+    /**
+     * 图片地址
+     *
+     * @mbg.generated
+     */
     private String productImg;
 
     /**

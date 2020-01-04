@@ -366,6 +366,76 @@ public class ProductExample {
             return (Criteria) this;
         }
 
+        public Criteria andProductSubheadIsNull() {
+            addCriterion("product_subhead is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadIsNotNull() {
+            addCriterion("product_subhead is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadEqualTo(String value) {
+            addCriterion("product_subhead =", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadNotEqualTo(String value) {
+            addCriterion("product_subhead <>", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadGreaterThan(String value) {
+            addCriterion("product_subhead >", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadGreaterThanOrEqualTo(String value) {
+            addCriterion("product_subhead >=", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadLessThan(String value) {
+            addCriterion("product_subhead <", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadLessThanOrEqualTo(String value) {
+            addCriterion("product_subhead <=", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadLike(String value) {
+            addCriterion("product_subhead like", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadNotLike(String value) {
+            addCriterion("product_subhead not like", value, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadIn(List<String> values) {
+            addCriterion("product_subhead in", values, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadNotIn(List<String> values) {
+            addCriterion("product_subhead not in", values, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadBetween(String value1, String value2) {
+            addCriterion("product_subhead between", value1, value2, "productSubhead");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSubheadNotBetween(String value1, String value2) {
+            addCriterion("product_subhead not between", value1, value2, "productSubhead");
+            return (Criteria) this;
+        }
+
         public Criteria andProductHeaderIsNull() {
             addCriterion("product_header is null");
             return (Criteria) this;
@@ -623,6 +693,126 @@ public class ProductExample {
 
         public Criteria andDescriptionNotBetween(String value1, String value2) {
             addCriterion("description not between", value1, value2, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeIsNull() {
+            addCriterion("is_home is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeIsNotNull() {
+            addCriterion("is_home is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeEqualTo(Integer value) {
+            addCriterion("is_home =", value, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeNotEqualTo(Integer value) {
+            addCriterion("is_home <>", value, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeGreaterThan(Integer value) {
+            addCriterion("is_home >", value, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_home >=", value, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeLessThan(Integer value) {
+            addCriterion("is_home <", value, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeLessThanOrEqualTo(Integer value) {
+            addCriterion("is_home <=", value, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeIn(List<Integer> values) {
+            addCriterion("is_home in", values, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeNotIn(List<Integer> values) {
+            addCriterion("is_home not in", values, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeBetween(Integer value1, Integer value2) {
+            addCriterion("is_home between", value1, value2, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHomeNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_home not between", value1, value2, "isHome");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendIsNull() {
+            addCriterion("is_recommend is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendIsNotNull() {
+            addCriterion("is_recommend is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendEqualTo(Integer value) {
+            addCriterion("is_recommend =", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendNotEqualTo(Integer value) {
+            addCriterion("is_recommend <>", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendGreaterThan(Integer value) {
+            addCriterion("is_recommend >", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_recommend >=", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendLessThan(Integer value) {
+            addCriterion("is_recommend <", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendLessThanOrEqualTo(Integer value) {
+            addCriterion("is_recommend <=", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendIn(List<Integer> values) {
+            addCriterion("is_recommend in", values, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendNotIn(List<Integer> values) {
+            addCriterion("is_recommend not in", values, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendBetween(Integer value1, Integer value2) {
+            addCriterion("is_recommend between", value1, value2, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_recommend not between", value1, value2, "isRecommend");
             return (Criteria) this;
         }
 
