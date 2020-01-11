@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration;
  * MyBatis配置类
  */
 @Configuration
-@MapperScan("com.wx.news.mapper")
+@MapperScan("com.wx.product.mapper")
 public class MyBatisConfig {
 }
