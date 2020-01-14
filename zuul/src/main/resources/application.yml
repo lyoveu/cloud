@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zuul
+
+eureka:
+  client:
+    serviceUrl:
+      defualtZone: http://localhost:8761/eureka
+
+server:
+  port: 9999
+zuul:
+  routes:
+    news:
+      path: /news/**
+      serviceId: news
+    product:
+      path: /product/**
+      serviceId: product
+
+
+
