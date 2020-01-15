@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: feign
+
+eureka:
+  client:
+    serviceUrl:
+      defualtZone: http://localhost:8761/eureka
+
+server:
+  port: 5555
+
+
+feign:
+  hystrix:
+    enabled: true
