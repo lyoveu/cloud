@@ -1,6 +1,6 @@
-package com.wx.feign.service.hystrix;
+package com.wx.feign.feign.hystrix;
 
-import com.wx.feign.service.FeignClientProduct;
+import com.wx.feign.feign.client.FeignClientProduct;
 import org.springframework.stereotype.Component;
 
 @Component

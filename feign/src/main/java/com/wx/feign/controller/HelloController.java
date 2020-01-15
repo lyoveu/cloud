@@ -1,6 +1,6 @@
 package com.wx.feign.controller;
 
-import com.wx.feign.service.FeignClientProduct;
+import com.wx.feign.feign.client.FeignClientProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

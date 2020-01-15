@@ -1,6 +1,6 @@
-package com.wx.feign.service;
+package com.wx.feign.feign.client;
 
-import com.wx.feign.service.hystrix.FeignClientProductHystrix;
+import com.wx.feign.feign.hystrix.FeignClientProductHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
