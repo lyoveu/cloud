@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master #git分支名称
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server
+#      uri: http://localhost:6600
+
+
+server:
+  port: 6601
+

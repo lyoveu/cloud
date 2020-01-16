@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lyoveu/sc_config.git #git地址
+          search-paths: wx #配置文件路径
+          #如果Git仓库为公开仓库，可以不填写用户名和密码，如果是私有仓库需要填写
+          username:
+          password:
+      label: master #git分支名称
+server:
+  port: 6600
+
+
+
+eureka:
+  client:
+    service-url:
+      defualtZone: http://localhost:8761
